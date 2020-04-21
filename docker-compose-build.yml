@@ -9,13 +9,22 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: apioak
-      MYSQL_DATABASE: apioak
-      MYSQL_USER: apioak
-      MYSQL_PASSWORD: apioak
+      MYSQL_ROOT_PASSWORD: spug
+      MYSQL_DATABASE: spug
+      MYSQL_USER: spug
+      MYSQL_PASSWORD: spug
     networks:
-      - apioak
-  apioak:
+      - spug
+  redis:
+    image: redis:5-alpine
+    volumes:
+      - ./redis/:/data/
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - spug
+  spug:
     build: 
       context: .
       dockerfile: Dockerfile
@@ -26,12 +35,13 @@ services:
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
-      DB_NAME: apioak      
-      DB_USER: apioak
-      DB_PASSWORD: apioak
-      TIME_ZONE: Asia/Shanghai
+      DB_NAME: spug      
+      DB_USER: spug
+      DB_PASSWORD: spug
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
     networks:
-      - apioak
+      - spug
 
 networks:
-  apioak:
+  spug:

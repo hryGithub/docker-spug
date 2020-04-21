@@ -15,10 +15,20 @@ services:
       MYSQL_PASSWORD: spug
     networks:
       - spug
+  redis:
+    image: redis:5-alpine
+    volumes:
+      - ./redis/:/data/
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - spug
   spug:
     image: hyr326/spug:latest
     depends_on: 
       - mysql
+      - redis
     ports:
       - "80:80"
     environment:
@@ -27,6 +37,8 @@ services:
       DB_NAME: spug      
       DB_USER: spug
       DB_PASSWORD: spug
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
     networks:
       - spug
 
