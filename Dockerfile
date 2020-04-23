@@ -5,7 +5,7 @@ ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-    
+
 RUN apk update && apk add --no-cache tzdata nginx git openldap-dev supervisor mysql-client mysql-dev bash openssl-dev \
     gcc musl-dev python3-dev libffi-dev openssl-dev make \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone \
@@ -37,4 +37,5 @@ ENV DB_HOST=127.0.0.1 \
 
 EXPOSE 80 9001 9002
 
+CMD ["dockerize", "-wait tcp://$DB_HOST:$DB_PORT -wait TCP://$REDIS_HOST:$REDIS_PORT"]
 ENTRYPOINT ["sh", "/entrypoint.sh"]

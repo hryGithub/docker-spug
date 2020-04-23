@@ -20,6 +20,7 @@ sed -i "s@'PASSWORD': 'spug_password'@'PASSWORD': '$DB_PASSWORD'@g" /spug/spug_a
 sed -i "s@'HOST': 'spug_host'@'HOST': '$DB_HOST'@g" /spug/spug_api/spug/overrides.py
 sed -i "s@'PORT': '3306'@'PORT': '$DB_PORT'@g" /spug/spug_api/spug/overrides.py
 
+
 if [[ -z $(mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -P$DB_PORT $DB_NAME -e "show tables;" |grep "django_migrations") ]];then
     cd /spug/spug_api
     python manage.py initdb
