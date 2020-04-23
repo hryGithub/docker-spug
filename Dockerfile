@@ -11,7 +11,7 @@ ENV VERSION=2.2.4
 RUN git clone https://github.com/openspug/spug.git --depth=1 /spug && cd /spug && git pull
 
 RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --upgrade pip && pip install --no-cache-dir -r /spug/spug_api/requirements.txt \
-    && pip install --no-cache-dir gunicorn \
+    && pip install --no-cache-dir gunicorn mysqlclient\
     && apk del .build-deps
 
 #RUN cd /spug/spug_web/ && npm i --registry=https://registry.npm.taobao.org && npm run build \
