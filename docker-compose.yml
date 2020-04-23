@@ -39,6 +39,7 @@ services:
       DB_PASSWORD: spug
       REDIS_HOST: redis
       REDIS_PORT: 6379
+    command: dockerize -wait tcp://mysql:3306 -wait http://redis:6379 -timeout 10s
     networks:
       - spug
 
