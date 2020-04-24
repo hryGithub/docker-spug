@@ -28,6 +28,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    restart: on-failure
     depends_on: 
       - mysql
     ports:

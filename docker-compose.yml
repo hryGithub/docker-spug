@@ -29,6 +29,7 @@ services:
     depends_on: 
       - mysql
       - redis
+    restart: on-failure
     ports:
       - "80:80"
     environment:
