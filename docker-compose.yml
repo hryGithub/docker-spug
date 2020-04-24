@@ -3,6 +3,7 @@ version: '3'
 services:
   mysql:
     image: mysql:5.7
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./mysql/:/var/lib/mysql/
     restart: always
@@ -40,7 +41,6 @@ services:
       DB_PASSWORD: spug
       REDIS_HOST: redis
       REDIS_PORT: 6379
-    command: dockerize -wait tcp://mysql:3306 -wait http://redis:6379 -timeout 10s
     networks:
       - spug
 
