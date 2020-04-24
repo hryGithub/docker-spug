@@ -1,7 +1,6 @@
 FROM python:3.6.10-alpine3.11
 
 RUN echo -e "http://mirrors.aliyun.com/alpine/v3.11/main\nhttp://mirrors.aliyun.com/alpine/v3.11/community" > /etc/apk/repositories
-
 RUN apk update && apk add --no-cache tzdata nginx git openldap-dev supervisor mysql-client mysql-dev bash openssl-dev \
     gcc musl-dev python3-dev libffi-dev openssl-dev make \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone \
