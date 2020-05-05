@@ -6,7 +6,7 @@ RUN apk update && apk add --no-cache tzdata nginx git openldap-dev supervisor my
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone \
     && mkdir /etc/supervisor.d
 
-ENV VERSION=2.2.4
+ENV VERSION=2.2.5
 RUN git clone https://github.com/openspug/spug.git --depth=1 /spug && cd /spug && git pull
 
 RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --upgrade pip && pip install --no-cache-dir -r /spug/spug_api/requirements.txt \
