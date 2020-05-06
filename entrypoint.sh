@@ -13,7 +13,7 @@ fi
 
 # init spug
 sed -i "s@redis://127.0.0.1:6379@redis://$REDIS_HOST:$REDIS_PORT@g" /spug/spug_api/spug/overrides.py
-sed -i "s@("127.0.0.1", 6379)@("$REDIS_HOST", $REDIS_PORT)@g" /spug/spug_api/spug/overrides.py
+sed -i "s@('127.0.0.1', 6379)@('$REDIS_HOST', $REDIS_PORT)@g" /spug/spug_api/spug/overrides.py
 sed -i "s@'NAME': 'spug_db'@'NAME': '$DB_NAME'@g" /spug/spug_api/spug/overrides.py
 sed -i "s@'USER': 'spug_user'@'USER': '$DB_USER'@g" /spug/spug_api/spug/overrides.py
 sed -i "s@'PASSWORD': 'spug_password'@'PASSWORD': '$DB_PASSWORD'@g" /spug/spug_api/spug/overrides.py
