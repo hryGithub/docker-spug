@@ -4,6 +4,8 @@
 # Released under the MIT License.
 
 set -e
+# set timezone
+cp /usr/share/zoneinfo/$TZ /etc/localtime && echo "$TZ" > /etc/timezone
 
 # init nginx
 if [ ! -d /run/nginx ]; then
