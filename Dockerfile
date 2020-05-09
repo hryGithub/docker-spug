@@ -29,4 +29,5 @@ ENV DB_HOST=127.0.0.1 \
 
 EXPOSE 80 9001 9002
 
+
 ENTRYPOINT ["sh", "/entrypoint.sh"]
