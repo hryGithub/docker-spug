@@ -1,10 +1,12 @@
+import os
+
 DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1']
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://"+ os.getenv('REDIS_HOST') + ":" + os.getenv('REDIS_PORT') + "/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -15,7 +17,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [(os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))],
         },
     },
 }
@@ -24,11 +26,11 @@ DATABASES = {
     'default': {
         'ATOMIC_REQUESTS': True,
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'spug_db',             # 替换为自己的数据库名，请预先创建好编码为utf8mb4的数据库
-        'USER': 'spug_user',        # 数据库用户名
-        'PASSWORD': 'spug_password',  # 数据库密码
-        'HOST': 'spug_host',        # 数据库地址
-        'PORT': '3306',             # 数据库端口号
+        'NAME': os.getenv('DB_NAME'),             # 替换为自己的数据库名，请预先创建好编码为utf8mb4的数据库
+        'USER': os.getenv('DB_USER'),        # 数据库用户名
+        'PASSWORD': os.getenv('DB_PASSWORD'),  # 数据库密码
+        'HOST': os.getenv('DB_HOST'),        # 数据库地址
+        'PORT': os.getenv('DB_PORT'),             # 数据库端口号
         'OPTIONS': {
             'charset': 'utf8mb4',
             'sql_mode': 'STRICT_TRANS_TABLES',
