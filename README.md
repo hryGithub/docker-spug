@@ -3,11 +3,11 @@
 
 # docker-compose
     git clone https://github.com/hryGithub/docker-spug.git
-    cd docker
-    docker-compose up 
+    cd docker-spug
+    docker-compose up -d
 
 # build 
     git clone https://github.com/hryGithub/docker-spug.git
     cd docker
-    docker-compose -f docker-compose-build.yml up 
+    docker-compose -f docker-compose-build.yml up -d
 
