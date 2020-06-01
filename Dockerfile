@@ -4,7 +4,7 @@ RUN echo -e "http://mirrors.aliyun.com/alpine/v3.11/main\nhttp://mirrors.aliyun.
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client \
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash
 
-ENV VERSION=2.2.6
+ENV VERSION=2.3.0
 ENV TZ=Aisa/Shanghai
 
 RUN git clone https://github.com/openspug/spug.git --depth=1 /spug && cd /spug && git pull
