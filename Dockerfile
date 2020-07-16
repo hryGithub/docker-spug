@@ -29,6 +29,7 @@ ENV DB_HOST=127.0.0.1 \
 
 EXPOSE 80 9001 9002
 
+
 VOLUME ["/data", "/var/www/build"]
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]
