@@ -7,15 +7,15 @@ RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client 
 ENV VERSION=2.3.7
 ENV TZ=Asia/Shanghai
 
-RUN git clone https://github.com/openspug/spug.git --depth=1 /data && cd /data && git pull
+RUN git clone https://github.com/openspug/spug.git --depth=1 /data/spug
 
-RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --no-cache-dir -r /data/spug_api/requirements.txt \
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt \
     && pip install --no-cache-dir gunicorn mysqlclient
 
 RUN cd /var/www && wget https://github.com/openspug/spug/releases/download/v$VERSION/spug_web_$VERSION.tar.gz && tar xf spug_web_$VERSION.tar.gz && rm -rf spug_web_$VERSION.tar.gz
 
 ADD spug.ini /etc/supervisor.d/spug.ini
-ADD overrides.py /data/spug_api/spug/overrides.py
+ADD overrides.py /data/spug/spug_api/spug/overrides.py
 ADD default.conf /etc/nginx/conf.d/default.conf
 ADD entrypoint.sh /entrypoint.sh
 
