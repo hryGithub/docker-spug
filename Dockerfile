@@ -1,6 +1,6 @@
-FROM python:3.6.10-alpine3.11
+FROM python:3.8-alpine3.12
 
-RUN echo -e "http://mirrors.aliyun.com/alpine/v3.11/main\nhttp://mirrors.aliyun.com/alpine/v3.11/community" > /etc/apk/repositories
+# RUN echo -e "http://mirrors.aliyun.com/alpine/v3.12/main\nhttp://mirrors.aliyun.com/alpine/v3.12/community" > /etc/apk/repositories
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash
 
