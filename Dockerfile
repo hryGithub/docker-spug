@@ -7,6 +7,7 @@ RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client 
 ENV VERSION=2.3.14
 ENV TZ=Asia/Shanghai
 
+
 RUN git clone https://github.com/openspug/spug.git --depth=1 /data/spug
 
 # RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt \
