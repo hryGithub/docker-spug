@@ -18,11 +18,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: get_version
       id: get_version
-      run: echo $(grep "VERSION=" Dockerfile |cut -d " " -f2) >> $GITHUB_ENV
+      run: echo $(grep "VERSION=" Dockerfile |cut -d " " -f2)
     - name: Build and publish images
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: hyr326/spug
-        tags: "v$VERSION,latest"
+        tags: "v${{ env.VERSION }},latest"
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
