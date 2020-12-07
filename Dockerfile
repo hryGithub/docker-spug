@@ -17,7 +17,7 @@ RUN cd /var/www && wget https://github.com/openspug/spug/releases/download/v$VER
 ADD spug.ini /etc/supervisor.d/spug.ini
 ADD overrides.py /data/spug/spug_api/spug/overrides.py
 ADD default.conf /etc/nginx/conf.d/default.conf
-ADD entrypoint.sh /entrypoint.sh
+ADD docker-entrypoint.sh /docker-entrypoint.sh
 
 ENV DB_HOST=127.0.0.1 \
     DB_PORT=3306 \
@@ -31,5 +31,5 @@ EXPOSE 80 9001 9002
 
 VOLUME ["/data", "/var/www/build"]
 
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
 
