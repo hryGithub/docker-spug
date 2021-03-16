@@ -11,7 +11,7 @@ RUN git clone https://github.com/openspug/spug.git --depth=1 /data/spug
 
 # RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt \
 #    && pip install --no-cache-dir gunicorn mysqlclient
-RUN pip install --upgrade pip && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt && pip install --no-cache-dir gunicorn mysqlclient
+RUN pip install --upgrade pip && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt && pip install --no-cache-dir gunicorn mysqlclient && apk del cargo
 RUN cd /var/www && wget https://github.com/openspug/spug/releases/download/v$VERSION/web_v$VERSION.tar.gz && tar xf web_v$VERSION.tar.gz && rm -rf web_v$VERSION.tar.gz
 
 ADD spug.ini /etc/supervisor.d/spug.ini
