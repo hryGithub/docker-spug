@@ -19,7 +19,7 @@ jobs:
     - name: get_version
       id: get_version
       env:
-        VERSION= $(grep "VERSION=" Dockerfile |cut -d " " -f2)
+        VERSION: $(grep "VERSION=" Dockerfile |cut -d " " -f2)
     - name: Build and publish images
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
