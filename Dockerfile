@@ -4,6 +4,7 @@ RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash
 
+
 ENV VERSION=2.3.15
 ENV TZ=Asia/Shanghai
 
