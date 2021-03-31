@@ -9,15 +9,13 @@ on:
     paths: [ 'Dockerfile']
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: Build and publish images
+    - name: set tag version
       run: echo ::save-state name=RELEASE_VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)
+    - name: Build and publish images  
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: hyr326/spug
