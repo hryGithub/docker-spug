@@ -16,12 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: get_version
-      run: echo $(grep "VERSION=" Dockerfile |cut -d " " -f2)
     - name: Build and publish images
+      pre: echo ::save-state name=RELEASE_VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: hyr326/spug
-        tags: "v${{ env.VERSION }},latest"
+        tags: "v${{ env.STATE_RELEASE_VERSION }},latest"
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
