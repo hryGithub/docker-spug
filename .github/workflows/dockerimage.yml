@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build and publish images
-      pre: echo ::save-state name=RELEASE_VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)
+      run: echo ::save-state name=RELEASE_VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: hyr326/spug
