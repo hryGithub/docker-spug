@@ -13,9 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: set tag version
-      run: echo ::save-state name=VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)
-    - name: Build and publish images  
+    - name: Build and publish images
+      pre: echo ::save-state name=VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)  
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: hyr326/spug
