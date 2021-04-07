@@ -13,11 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Set version
+      run: echo $(grep "VERSION=" Dockerfile | cut -d " " -f 2) >> $GITHUB_ENV
     - name: Build and publish images
-      pre: echo ::save-state name=VERSION::$(grep "VERSION=" Dockerfile |cut -d "=" -f2)  
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: hyr326/spug
-        tags: "v${{ env.STATE_VERSION }},latest"
+        tags: "v${{ env.VERSION }},latest"
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
