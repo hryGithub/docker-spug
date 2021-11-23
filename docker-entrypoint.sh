@@ -16,7 +16,7 @@ fi
 if [[ -z $(mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -P$DB_PORT $DB_NAME -e "show tables;" |grep "django_migrations") ]];then
     cd /data/spug/spug_api
     python manage.py updatedb
-    python manage.py useradd -u admin -p spug.dev -s -n "管理员"
+    python manage.py user add -u admin -p spug.dev -s -n "管理员"
 fi
 
 nginx
