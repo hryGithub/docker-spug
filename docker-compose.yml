@@ -3,6 +3,7 @@ version: '3'
 services:
   mysql:
     image: mysql:5.7
+    container_name: spug_mysql
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./mysql/:/var/lib/mysql/
@@ -18,6 +19,7 @@ services:
       - spug
   redis:
     image: redis:5-alpine
+    container_name: spug_redis
     volumes:
       - ./redis/:/data/
     restart: always
@@ -27,6 +29,7 @@ services:
       - spug
   spug:
     image: hyr326/spug:latest
+    container_name: spug
     depends_on: 
       - mysql
       - redis
