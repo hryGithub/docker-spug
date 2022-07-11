@@ -2,9 +2,9 @@ FROM python:3.6.10-alpine3.12
 
 RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
-    openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash
+    openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash rsync sshfs
 
-ENV VERSION=3.0.4
+ENV VERSION=3.2.0
 ENV TZ=Asia/Shanghai
 
 RUN git clone https://github.com/openspug/spug.git --depth=1 /data/spug
