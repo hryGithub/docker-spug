@@ -6,7 +6,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://"+ os.getenv('REDIS_HOST') + ":" + os.getenv('REDIS_PORT') + "/1",
+        "LOCATION": "redis://"+ os.getenv('REDIS_HOST') + ":" + os.getenv('REDIS_PORT') + "/"  + os.getenv('REDIS_CACHES'),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -17,7 +17,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(os.getenv('REDIS_HOST'), os.getenv('REDIS_PORT'))],
+            "hosts": ["redis://"+ os.getenv('REDIS_HOST') + ":" + os.getenv('REDIS_PORT') + "/"  + os.getenv('REDIS_CHANNEL'],
         },
     },
 }
