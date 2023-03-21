@@ -19,6 +19,6 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
         name: hyr326/spug
-        tags: "v${{ env.VERSION }},latest"
+        tags: "${{ env.VERSION }},latest"
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
