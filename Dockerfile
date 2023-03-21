@@ -4,7 +4,7 @@ FROM python:3.6.10-alpine3.12
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash rsync sshfs
 
-ENV VERSION=2.3.18
+ENV VERSION=3.2.5
 ENV TZ=Asia/Shanghai
 
 RUN git clone -b v$VERSION https://github.com/openspug/spug.git --depth=1 /data/spug
