@@ -4,10 +4,10 @@ FROM python:3.6.10-alpine3.12
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash rsync sshfs
 
-ENV VERSION=3.2.5
+ENV VERSION=2.3.18
 ENV TZ=Asia/Shanghai
 
-RUN mkdir /data -p && cd /data && wget https://github.com/openspug/spug/archive/refs/tags/v$VERSION.tar.gz && tar xf v$VERSION.tar.gz && mv v$VERSION spug
+RUN mkdir /data -p && cd /data && wget https://github.com/openspug/spug/archive/refs/tags/v$VERSION.tar.gz && tar xf v$VERSION.tar.gz && mv spug-v$VERSION spug
 
 # RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt \
 #    && pip install --no-cache-dir gunicorn mysqlclient
