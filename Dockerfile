@@ -7,7 +7,7 @@ RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client 
 ENV VERSION=3.2.5
 ENV TZ=Asia/Shanghai
 
-RUN mkdir /data -p && cd /data && wget https://github.com/openspug/spug/archive/refs/tags/v$VERSION.tar.gz && tar xf v$VERSION.tar.gz && mv spug-$VERSION spug
+RUN git clone -b $VERSION https://github.com/openspug/spug.git --depth=1 /data/spug
 
 # RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/  && pip install --no-cache-dir -r /data/spug/spug_api/requirements.txt \
 #    && pip install --no-cache-dir gunicorn mysqlclient
