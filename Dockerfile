@@ -4,7 +4,7 @@ RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash rsync sshfs
 
-ENV VERSION=2.3.18
+ENV VERSION=3.2.5
 ENV TZ=Asia/Shanghai
 
 RUN mkdir /data -p && cd /data && wget https://github.com/openspug/spug/archive/refs/tags/v$VERSION.tar.gz && tar xf v$VERSION.tar.gz && mv v$VERSION spug
