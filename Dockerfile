@@ -4,6 +4,7 @@ FROM python:3.6.10-alpine3.12
 RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client curl\
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash rsync sshfs
 
+
 ENV VERSION=3.2.6
 ENV TZ=Asia/Shanghai
 
