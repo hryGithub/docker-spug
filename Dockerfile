@@ -5,7 +5,7 @@ RUN apk update && apk add --no-cache tzdata nginx git supervisor mariadb-client 
     openldap-dev mariadb-dev openssl-dev musl-dev python3-dev libffi-dev gcc make bash rsync sshfs
 
 
-ENV VERSION=3.2.6
+ENV VERSION=3.2.7
 ENV TZ=Asia/Shanghai
 
 RUN git clone -b v$VERSION https://github.com/openspug/spug.git --depth=1 /data/spug
